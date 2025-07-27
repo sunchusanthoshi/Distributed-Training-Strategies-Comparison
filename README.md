@@ -23,22 +23,22 @@ To analyze how distributed strategies affect training time and performance when 
 
 ## ⚙️ Training Strategies Compared
 
-### 1. ❌ Without MPI
+### 1. Without MPI
 - Model runs on a single machine with no parallelization  
 - Sequential training using Keras with basic architecture  
 - Baseline for comparing distributed approaches
 
-### 2. 🔁 With MPI
+### 2. With MPI
 - Utilizes `mpi4py` for distributing data and training across nodes  
 - Each node trains on a partitioned dataset  
 - Uses MPI's collective operations to average results and sync parameters
 
-### 3. 🧩 Mirrored Strategy (TensorFlow)
+### 3. Mirrored Strategy (TensorFlow)
 - Native TensorFlow multi-GPU synchronous strategy  
 - Replicates model across GPUs, each computing gradients  
 - Gradients averaged and synchronized before weight update
 
-### 4. ⚡ Custom Data Parallelism
+### 4. Custom Data Parallelism
 - Manual GPU assignment with `tf.function` and custom loops  
 - Direct control over data/model split, gradient aggregation  
 - Most flexible but complex to implement
